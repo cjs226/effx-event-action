@@ -1,0 +1,25 @@
+
+name: "effx event"
+description: "Create an event"
+inputs:
+  desc:
+    description: "description of your event"
+    required: true
+  name:
+    description: "name of your event"
+    required: true
+  service:
+    description: "name of service"
+    required" true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "event"
+    - "create" 
+    - "--desc"
+    - ${{ inputs.desc }}
+    - "--name"
+    - ${{ inputs.name }}
+    - "--service"
+    - ${{ inputs.service }}
