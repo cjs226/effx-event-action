@@ -19,6 +19,10 @@ runs:
     - "create" 
     - "--desc"
     - ${{ inputs.desc }}
+    - "--integration_name"
+    - "github-action"
+    - "--integration_version"
+    - "0"
     - "--name"
     - ${{ inputs.name }}
     - "--service"
