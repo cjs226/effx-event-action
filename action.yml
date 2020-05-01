@@ -17,12 +17,12 @@ runs:
   args:
     - "event"
     - "create" 
-    - "--desc"
-    - ${{ inputs.desc }}
     - "--integration_name"
     - "github-action"
     - "--integration_version"
     - "0"
+    - "--desc"
+    - ${{ inputs.desc }}
     - "--name"
     - ${{ inputs.name }}
     - "--service"
