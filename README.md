@@ -16,6 +16,9 @@ jobs:
   build:
     name: "Create effx event"
     runs-on: ubuntu-latest
+    env:
+      EFFX_API_KEY: ${{ secrets.EFFX_API_KEY }}
+      EFFX_SERVICE_NAME: Foo Service
     
     steps:
       - uses: actions/checkout@master
@@ -27,9 +30,7 @@ jobs:
         with:
           name: "Pull request submitted by ${{ github.event.pull_request.user.login }}"
           desc: "${{ github.event.pull_request.title }} --> ${{ github.event.pull_request.html_url }}"
-          service: "acme-anvil"
-        env:
-          EFFX_API_KEY: ${{ secrets.EFFX_API_KEY }}
+          service: ${{ env.EFFX_SERVICE_NAME }}
 
       # Commits to master
       - name: Send commits to master to effx
@@ -38,9 +39,7 @@ jobs:
         with:
           name: "Push to master branch by ${{ github.event.head_commit.author.name }}"
           desc: "${{ github.event.head_commit.message }} --> ${{ github.event.head_commit.url }}"
-          service: "acme-anvil"
-        env:
-          EFFX_API_KEY: ${{ secrets.EFFX_API_KEY }}
+          service: ${{ env.EFFX_SERVICE_NAME }}
 ```
 
 ### Environment Variables
